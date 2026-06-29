@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AB0000000000000000000101 /* AgentBoardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000201 /* AgentBoardApp.swift */; };
 		AB0000000000000000000102 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000202 /* ContentView.swift */; };
+                AB0000000000000000000117 /* UsageRefreshController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000217 /* UsageRefreshController.swift */; };
 		AB0000000000000000000103 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000203 /* AppConfiguration.swift */; };
 		AB0000000000000000000104 /* AuthTokenReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000204 /* AuthTokenReader.swift */; };
 		AB0000000000000000000105 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000205 /* JSONValue.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		AB0000000000000000000201 /* AgentBoardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentBoardApp.swift; sourceTree = "<group>"; };
 		AB0000000000000000000202 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+                AB0000000000000000000217 /* UsageRefreshController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageRefreshController.swift; sourceTree = "<group>"; };
 		AB0000000000000000000203 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		AB0000000000000000000204 /* AuthTokenReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenReader.swift; sourceTree = "<group>"; };
 		AB0000000000000000000205 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				AB0000000000000000000201 /* AgentBoardApp.swift */,
 				AB0000000000000000000202 /* ContentView.swift */,
+                                AB0000000000000000000217 /* UsageRefreshController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 			files = (
 				AB0000000000000000000101 /* AgentBoardApp.swift in Sources */,
 				AB0000000000000000000102 /* ContentView.swift in Sources */,
+                                AB0000000000000000000117 /* UsageRefreshController.swift in Sources */,
 				AB0000000000000000000103 /* AppConfiguration.swift in Sources */,
 				AB0000000000000000000104 /* AuthTokenReader.swift in Sources */,
 				AB0000000000000000000105 /* JSONValue.swift in Sources */,

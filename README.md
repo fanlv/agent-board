@@ -7,9 +7,10 @@ Native macOS app plus WidgetKit desktop widget for showing ChatGPT usage from th
 - Reads `tokens.access_token` from `~/.codex/auth.json`.
 - Calls `GET https://chatgpt.com/backend-api/wham/usage` with `Authorization: Bearer <access_token>`.
 - Calls `GET https://chatgpt.com/backend-api/wham/rate-limit-reset-credits` to show reset-credit information.
-- Parses the JSON response defensively, extracting likely usage, limit, quota, reset, plan, tier, and message fields.
+- Parses the usage response into the email, plan type, 5-hour window, 7-day window, reset-credit count, and reset-credit expiry fields shown by the app and widget.
 - Stores only a token-free usage snapshot in the App Group cache.
 - Shows the cached snapshot in a macOS desktop widget.
+- Keeps a menu bar item running after the main window is closed, so the widget cache can continue refreshing in the background.
 
 The access token is never written to disk by this app.
 Release builds of the main app are sandboxed. Debug builds use a non-sandboxed entitlement file so Xcode can run the app directly without macOS sandbox init crashes. On first run, grant read-only access to `~/.codex/auth.json`; the app stores a security-scoped bookmark, not the token.
@@ -30,6 +31,7 @@ Release builds of the main app are sandboxed. Debug builds use a non-sandboxed e
 5. Run the `AgentBoard` app and press `Refresh`.
 6. If prompted in the app, click `Grant auth.json Access` and select `~/.codex/auth.json`.
 7. Add the `Agent Usage` widget from macOS widget gallery.
+8. Use the menu bar item to reopen the window, refresh manually, reload the widget, enable `Launch at Login`, or quit the app.
 
 ## Build Check
 
@@ -46,8 +48,10 @@ xcodebuild -project AgentBoard.xcodeproj \
 
 ## Update Behavior
 
-The main app reads `~/.codex/auth.json`, refreshes usage on launch, and refreshes every minute while it is running. The widget reads the token-free snapshot from the App Group cache and asks WidgetKit for a new timeline every minute.
+The app-level refresh controller reads `~/.codex/auth.json`, refreshes usage on launch, and refreshes every minute while the app process is running. Closing the window does not stop this controller; the menu bar item keeps the process alive. Use `Quit Agent Board` from the menu bar item, or `Command-Q`, when you want to stop background refreshes.
 
 macOS may still throttle WidgetKit timeline refreshes under power or system policy. The app requests a one-minute cadence, but the system controls the final schedule.
+
+Enable `Launch at Login` from the menu bar item if you want the refresh controller to start automatically after login.
 
 WidgetKit extensions are sandboxed, so the widget intentionally does not depend on directly reading `~/.codex/auth.json`.

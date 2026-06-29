@@ -4,13 +4,15 @@ import UniformTypeIdentifiers
 import WidgetKit
 
 struct ContentView: View {
-    @State private var snapshot = UsageSnapshotStore.load() ?? .placeholder
-    @State private var isRefreshing = false
+    @EnvironmentObject private var refreshController: UsageRefreshController
 
-    private let refreshTimer = Timer.publish(every: AppConfiguration.usageRefreshInterval, on: .main, in: .common).autoconnect()
     private let columns = [
         GridItem(.adaptive(minimum: 220), spacing: 12)
     ]
+
+    private var snapshot: UsageSnapshot {
+        refreshController.snapshot
+    }
 
     var body: some View {
         ScrollView {
@@ -37,15 +39,6 @@ struct ContentView: View {
             .frame(maxWidth: .infinity, alignment: .topLeading)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-
-        .task {
-            await refreshUsage()
-        }
-        .onReceive(refreshTimer) { _ in
-            Task {
-                await refreshUsage()
-            }
-        }
     }
 
     private var header: some View {
@@ -69,15 +62,15 @@ struct ContentView: View {
             VStack(alignment: .trailing, spacing: 8) {
                 Button {
                     Task {
-                        await refreshUsage()
+                        await refreshController.refreshUsage()
                     }
                 } label: {
-                    Label(isRefreshing ? "Refreshing" : "Refresh", systemImage: "arrow.clockwise")
+                    Label(refreshController.isRefreshing ? "Refreshing" : "Refresh", systemImage: "arrow.clockwise")
                 }
-                .disabled(isRefreshing)
+                .disabled(refreshController.isRefreshing)
 
                 Button {
-                    WidgetCenter.shared.reloadAllTimelines()
+                    refreshController.reloadWidget()
                 } label: {
                     Label("Reload Widget", systemImage: "rectangle.3.group")
                 }
@@ -222,23 +215,6 @@ struct ContentView: View {
         }
     }
 
-    @MainActor
-    private func refreshUsage() async {
-        guard !isRefreshing else {
-            return
-        }
-
-        isRefreshing = true
-        let nextSnapshot = await UsageService().fetchUsage()
-        snapshot = nextSnapshot
-
-        if nextSnapshot.isReady {
-            WidgetCenter.shared.reloadTimelines(ofKind: AppConfiguration.widgetKind)
-        }
-
-        isRefreshing = false
-    }
-
     private func revealAuthFile() {
         let authURL = AuthFileBookmarkStore.defaultAuthURL
 
@@ -271,13 +247,15 @@ struct ContentView: View {
         do {
             try AuthFileBookmarkStore.saveBookmark(for: selectedURL)
             Task {
-                await refreshUsage()
+                await refreshController.refreshUsage()
             }
         } catch {
-            snapshot = UsageSnapshot.failure(
-                state: .authFileAccessNotGranted,
-                subtitle: "Could not save file access",
-                errorMessage: error.localizedDescription
+            refreshController.replaceSnapshot(
+                UsageSnapshot.failure(
+                    state: .authFileAccessNotGranted,
+                    subtitle: "Could not save file access",
+                    errorMessage: error.localizedDescription
+                )
             )
         }
     }
