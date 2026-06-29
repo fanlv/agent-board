@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AB0000000000000000000101 /* AgentBoardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000201 /* AgentBoardApp.swift */; };
+		AB0000000000000000000102 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000202 /* ContentView.swift */; };
+		AB0000000000000000000103 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000203 /* AppConfiguration.swift */; };
+		AB0000000000000000000104 /* AuthTokenReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000204 /* AuthTokenReader.swift */; };
+		AB0000000000000000000105 /* JSONValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000205 /* JSONValue.swift */; };
+		AB0000000000000000000106 /* UsageResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000206 /* UsageResponseParser.swift */; };
+		AB0000000000000000000107 /* UsageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000207 /* UsageService.swift */; };
+		AB0000000000000000000108 /* UsageSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000208 /* UsageSnapshot.swift */; };
+		AB0000000000000000000109 /* UsageSnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000209 /* UsageSnapshotStore.swift */; };
+		AB0000000000000000000110 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000210 /* Assets.xcassets */; };
+		AB0000000000000000000111 /* AgentUsageWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000212 /* AgentUsageWidget.swift */; };
+		AB0000000000000000000112 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000203 /* AppConfiguration.swift */; };
+		AB0000000000000000000113 /* UsageSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000208 /* UsageSnapshot.swift */; };
+		AB0000000000000000000114 /* UsageSnapshotStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000209 /* UsageSnapshotStore.swift */; };
+		AB0000000000000000000115 /* Resources/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000215 /* Resources/Assets.xcassets */; };
+		AB0000000000000000000116 /* AgentBoardWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AB0000000000000000000221 /* AgentBoardWidget.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB0000000000000000000301 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB0000000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB0000000000000000000402;
+			remoteInfo = AgentBoardWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AB0000000000000000000501 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AB0000000000000000000116 /* AgentBoardWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AB0000000000000000000201 /* AgentBoardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentBoardApp.swift; sourceTree = "<group>"; };
+		AB0000000000000000000202 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AB0000000000000000000203 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		AB0000000000000000000204 /* AuthTokenReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTokenReader.swift; sourceTree = "<group>"; };
+		AB0000000000000000000205 /* JSONValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONValue.swift; sourceTree = "<group>"; };
+		AB0000000000000000000206 /* UsageResponseParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageResponseParser.swift; sourceTree = "<group>"; };
+		AB0000000000000000000207 /* UsageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageService.swift; sourceTree = "<group>"; };
+		AB0000000000000000000208 /* UsageSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageSnapshot.swift; sourceTree = "<group>"; };
+		AB0000000000000000000209 /* UsageSnapshotStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageSnapshotStore.swift; sourceTree = "<group>"; };
+		AB0000000000000000000210 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AB0000000000000000000211 /* AgentBoard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AgentBoard.entitlements; sourceTree = "<group>"; };
+		AB0000000000000000000216 /* AgentBoardDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AgentBoardDebug.entitlements; sourceTree = "<group>"; };
+		AB0000000000000000000212 /* AgentUsageWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgentUsageWidget.swift; sourceTree = "<group>"; };
+		AB0000000000000000000213 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB0000000000000000000214 /* AgentBoardWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AgentBoardWidget.entitlements; sourceTree = "<group>"; };
+		AB0000000000000000000215 /* Resources/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		AB0000000000000000000220 /* AgentBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AgentBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB0000000000000000000221 /* AgentBoardWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AgentBoardWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB0000000000000000000601 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB0000000000000000000602 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB0000000000000000000701 = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000000702 /* AgentBoard */,
+				AB0000000000000000000706 /* AgentBoardWidget */,
+				AB0000000000000000000709 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000702 /* AgentBoard */ = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000000703 /* App */,
+				AB0000000000000000000704 /* Shared */,
+				AB0000000000000000000705 /* Resources */,
+				AB0000000000000000000211 /* AgentBoard.entitlements */,
+				AB0000000000000000000216 /* AgentBoardDebug.entitlements */,
+			);
+			path = AgentBoard;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000703 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000000201 /* AgentBoardApp.swift */,
+				AB0000000000000000000202 /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000704 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000000203 /* AppConfiguration.swift */,
+				AB0000000000000000000204 /* AuthTokenReader.swift */,
+				AB0000000000000000000205 /* JSONValue.swift */,
+				AB0000000000000000000206 /* UsageResponseParser.swift */,
+				AB0000000000000000000207 /* UsageService.swift */,
+				AB0000000000000000000208 /* UsageSnapshot.swift */,
+				AB0000000000000000000209 /* UsageSnapshotStore.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000705 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000000210 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000706 /* AgentBoardWidget */ = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000000212 /* AgentUsageWidget.swift */,
+				AB0000000000000000000213 /* Info.plist */,
+				AB0000000000000000000214 /* AgentBoardWidget.entitlements */,
+				AB0000000000000000000707 /*  */,
+			);
+			path = AgentBoardWidget;
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000707 /*  */ = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000000215 /* Resources/Assets.xcassets */,
+			);
+			name = "";
+			sourceTree = "<group>";
+		};
+		AB0000000000000000000709 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB0000000000000000000220 /* AgentBoard.app */,
+				AB0000000000000000000221 /* AgentBoardWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AB0000000000000000000401 /* AgentBoard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB0000000000000000000802 /* Build configuration list for PBXNativeTarget "AgentBoard" */;
+			buildPhases = (
+				AB0000000000000000000901 /* Sources */,
+				AB0000000000000000000601 /* Frameworks */,
+				AB0000000000000000000902 /* Resources */,
+				AB0000000000000000000501 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB0000000000000000000302 /* PBXTargetDependency */,
+			);
+			name = AgentBoard;
+			productName = AgentBoard;
+			productReference = AB0000000000000000000220 /* AgentBoard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AB0000000000000000000402 /* AgentBoardWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB0000000000000000000803 /* Build configuration list for PBXNativeTarget "AgentBoardWidget" */;
+			buildPhases = (
+				AB0000000000000000000903 /* Sources */,
+				AB0000000000000000000602 /* Frameworks */,
+				AB0000000000000000000904 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AgentBoardWidget;
+			productName = AgentBoardWidget;
+			productReference = AB0000000000000000000221 /* AgentBoardWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB0000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					AB0000000000000000000401 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					AB0000000000000000000402 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+				};
+			};
+			buildConfigurationList = AB0000000000000000000801 /* Build configuration list for PBXProject "AgentBoard" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AB0000000000000000000701;
+			productRefGroup = AB0000000000000000000709 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB0000000000000000000401 /* AgentBoard */,
+				AB0000000000000000000402 /* AgentBoardWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB0000000000000000000902 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB0000000000000000000110 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB0000000000000000000904 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB0000000000000000000115 /* Resources/Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB0000000000000000000901 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB0000000000000000000101 /* AgentBoardApp.swift in Sources */,
+				AB0000000000000000000102 /* ContentView.swift in Sources */,
+				AB0000000000000000000103 /* AppConfiguration.swift in Sources */,
+				AB0000000000000000000104 /* AuthTokenReader.swift in Sources */,
+				AB0000000000000000000105 /* JSONValue.swift in Sources */,
+				AB0000000000000000000106 /* UsageResponseParser.swift in Sources */,
+				AB0000000000000000000107 /* UsageService.swift in Sources */,
+				AB0000000000000000000108 /* UsageSnapshot.swift in Sources */,
+				AB0000000000000000000109 /* UsageSnapshotStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB0000000000000000000903 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB0000000000000000000111 /* AgentUsageWidget.swift in Sources */,
+				AB0000000000000000000112 /* AppConfiguration.swift in Sources */,
+				AB0000000000000000000113 /* UsageSnapshot.swift in Sources */,
+				AB0000000000000000000114 /* UsageSnapshotStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AB0000000000000000000302 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB0000000000000000000402 /* AgentBoardWidget */;
+			targetProxy = AB0000000000000000000301 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AB0000000000000000001001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		AB0000000000000000001002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		AB0000000000000000001003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AgentBoard/AgentBoardDebug.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9BQ563P4RA;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Agent Board";
+				INFOPLIST_KEY_CFBundleShortVersionString = 1.0;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanlv.AgentBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		AB0000000000000000001004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AgentBoard/AgentBoard.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9BQ563P4RA;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Agent Board";
+				INFOPLIST_KEY_CFBundleShortVersionString = 1.0;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanlv.AgentBoard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		AB0000000000000000001005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = AgentBoardWidget/AgentBoardWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9BQ563P4RA;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AgentBoardWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanlv.AgentBoard.AgentUsageWidget;
+				PRODUCT_NAME = AgentBoardWidget;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = appex;
+			};
+			name = Debug;
+		};
+		AB0000000000000000001006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_ENTITLEMENTS = AgentBoardWidget/AgentBoardWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9BQ563P4RA;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = AgentBoardWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fanlv.AgentBoard.AgentUsageWidget;
+				PRODUCT_NAME = AgentBoardWidget;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				WRAPPER_EXTENSION = appex;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AB0000000000000000000801 /* Build configuration list for PBXProject "AgentBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB0000000000000000001001 /* Debug */,
+				AB0000000000000000001002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB0000000000000000000802 /* Build configuration list for PBXNativeTarget "AgentBoard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB0000000000000000001003 /* Debug */,
+				AB0000000000000000001004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB0000000000000000000803 /* Build configuration list for PBXNativeTarget "AgentBoardWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB0000000000000000001005 /* Debug */,
+				AB0000000000000000001006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB0000000000000000000001 /* Project object */;
+}
