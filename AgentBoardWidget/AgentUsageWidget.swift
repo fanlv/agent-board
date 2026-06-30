@@ -93,12 +93,12 @@ struct AgentUsageWidgetView: View {
             HStack(alignment: .lastTextBaseline, spacing: 10) {
                 Text(primaryPercentText)
                     .font(.system(size: compact ? 36 : 54, weight: .heavy, design: .rounded))
-                    .tracking(compact ? -1.2 : -2.4)
+                    .tracking(compact ? -0.4 : -1.0)
                     .foregroundStyle(.white)
                     .lineLimit(1)
                     .minimumScaleFactor(0.65)
 
-                Text("used")
+                Text("Used")
                     .font(.system(size: compact ? 12 : 18, weight: .bold, design: .monospaced))
                     .foregroundStyle(QuotaPalette.cardMuted)
             }
@@ -139,7 +139,7 @@ struct AgentUsageWidgetView: View {
 
                 Text(progress.map(windowValue(for:)) ?? fallbackWindowValue)
                     .font(.system(size: 12, weight: .heavy, design: .monospaced))
-                    .foregroundStyle(.white.opacity(0.90))
+                    .foregroundStyle(.white)
                     .lineLimit(1)
                     .minimumScaleFactor(0.65)
             }
@@ -199,7 +199,7 @@ struct AgentUsageWidgetView: View {
     }
 
     private var primaryPercentText: String {
-        primaryProgress?.current ?? "\(Int((primaryRemainingFraction * 100).rounded()))%"
+        primaryProgress?.current ?? "\(Int(((1 - primaryRemainingFraction) * 100).rounded()))%"
     }
 
     private var primaryCaption: String {
@@ -311,11 +311,11 @@ struct AgentUsageWidgetView: View {
     }
 
     private func windowValue(for progress: UsageProgress) -> String {
-        if let resetTime = progress.resetTime {
-            return "\(progress.current) used • \(resetTime)"
-        }
+        "剩余 \(remainingPercentText(for: progress))"
+    }
 
-        return "\(progress.current) used"
+    private func remainingPercentText(for progress: UsageProgress) -> String {
+        "\(Int((progressRemainingFraction(progress) * 100).rounded()))%"
     }
 
     private func progressRemainingFraction(_ progress: UsageProgress?) -> Double {
@@ -323,7 +323,8 @@ struct AgentUsageWidgetView: View {
             return entry.snapshot.isReady ? 0.5 : 0
         }
 
-        return max(0, min(1, progress.fraction))
+        let usedFraction = max(0, min(1, progress.fraction))
+        return 1 - usedFraction
     }
 
     private func cardBackground(emphasized: Bool) -> LinearGradient {
@@ -383,7 +384,7 @@ private enum QuotaPalette {
     static let hotLine = Color(red: 0.96, green: 0.31, blue: 0.38).opacity(0.35)
     static let cardTop = Color(red: 0.37, green: 0.39, blue: 0.42).opacity(0.92)
     static let cardBottom = Color(red: 0.24, green: 0.27, blue: 0.30).opacity(0.94)
-    static let cardMuted = Color(red: 0.78, green: 0.82, blue: 0.87)
+    static let cardMuted = Color(red: 0.90, green: 0.93, blue: 0.96)
     static let cardPrimary = Color(red: 0.76, green: 1.00, blue: 0.89)
     static let cardGreen = Color(red: 0.39, green: 0.86, blue: 0.76)
     static let cardBlue = Color(red: 0.39, green: 0.57, blue: 0.96)
@@ -433,31 +434,31 @@ private struct CircuitPattern: View {
             ZStack {
                 circuitPath(in: geometry.size)
                     .stroke(
-                        Color.white.opacity(0.36),
+                        Color.white.opacity(0.16),
                         style: StrokeStyle(lineWidth: compact ? 1.2 : 1.6, lineCap: .round, lineJoin: .round)
                     )
 
                 circuitPath(in: geometry.size)
                     .stroke(
-                        Color(red: 0.22, green: 0.55, blue: 0.70).opacity(0.13),
+                        Color(red: 0.22, green: 0.55, blue: 0.70).opacity(0.08),
                         style: StrokeStyle(lineWidth: compact ? 4 : 6, lineCap: .round, lineJoin: .round)
                     )
-                    .blur(radius: 5)
+                    .blur(radius: 3)
 
                 ForEach(Self.nodes.indices, id: \.self) { index in
                     let node = Self.nodes[index]
                     Circle()
                         .fill(index.isMultiple(of: 2) ? QuotaPalette.cardPrimary : Color.white.opacity(0.78))
                         .frame(width: compact ? node.size * 0.72 : node.size, height: compact ? node.size * 0.72 : node.size)
-                        .shadow(color: QuotaPalette.cardPrimary.opacity(0.24), radius: 9, x: 0, y: 0)
+                        .shadow(color: QuotaPalette.cardPrimary.opacity(0.14), radius: 5, x: 0, y: 0)
                         .position(x: geometry.size.width * node.x, y: geometry.size.height * node.y)
                 }
 
                 RoundedRectangle(cornerRadius: compact ? 18 : 28, style: .continuous)
-                    .stroke(.white.opacity(0.22), lineWidth: 1)
+                    .stroke(.white.opacity(0.12), lineWidth: 1)
                     .background(
                         RoundedRectangle(cornerRadius: compact ? 18 : 28, style: .continuous)
-                            .fill(.white.opacity(0.10))
+                            .fill(.white.opacity(0.05))
                     )
                     .frame(width: geometry.size.width * 0.48, height: geometry.size.height * 0.30)
                     .position(x: geometry.size.width * 0.74, y: geometry.size.height * 0.20)
@@ -533,11 +534,11 @@ private struct DecorativeTypeField: View {
     }
 
     private static let fragments = [
-        Fragment(text: "TOTAL", x: 0.14, y: 0.18, size: 20, opacity: 0.050, rotation: -2, weight: .heavy),
-        Fragment(text: "TOKENS", x: 0.82, y: 0.20, size: 18, opacity: 0.046, rotation: 5, weight: .bold),
-        Fragment(text: "LIMITS", x: 0.18, y: 0.56, size: 18, opacity: 0.038, rotation: 7, weight: .semibold),
-        Fragment(text: "RESET", x: 0.78, y: 0.66, size: 22, opacity: 0.040, rotation: -8, weight: .heavy),
-        Fragment(text: "Σ", x: 0.48, y: 0.28, size: 42, opacity: 0.035, rotation: -8, weight: .black)
+        Fragment(text: "TOTAL", x: 0.14, y: 0.18, size: 20, opacity: 0.018, rotation: -2, weight: .heavy),
+        Fragment(text: "TOKENS", x: 0.82, y: 0.20, size: 18, opacity: 0.016, rotation: 5, weight: .bold),
+        Fragment(text: "LIMITS", x: 0.18, y: 0.56, size: 18, opacity: 0.014, rotation: 7, weight: .semibold),
+        Fragment(text: "RESET", x: 0.78, y: 0.66, size: 22, opacity: 0.016, rotation: -8, weight: .heavy),
+        Fragment(text: "Σ", x: 0.48, y: 0.28, size: 42, opacity: 0.012, rotation: -8, weight: .black)
     ]
 }
 

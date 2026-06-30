@@ -83,24 +83,50 @@ struct ContentView: View {
             Text("Usage")
                 .font(.headline)
 
-            ForEach(snapshot.progress) { item in
-                VStack(alignment: .leading, spacing: 6) {
-                    HStack {
-                        Text(item.label)
-                            .font(.subheadline.weight(.medium))
-                        Spacer()
-                        Text("已用 \(item.current) · \(item.limit)")
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
+            ViewThatFits(in: .horizontal) {
+                HStack(spacing: 12) {
+                    ForEach(snapshot.progress) { item in
+                        progressCard(item)
                     }
-
-                    ProgressView(value: item.fraction)
-                        .progressViewStyle(.linear)
                 }
-                .padding(14)
-                .background(.quaternary.opacity(0.5), in: RoundedRectangle(cornerRadius: 14))
+
+                VStack(spacing: 12) {
+                    ForEach(snapshot.progress) { item in
+                        progressCard(item)
+                    }
+                }
             }
         }
+    }
+
+    private func progressCard(_ item: UsageProgress) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack {
+                Text(item.label)
+                    .font(.subheadline.weight(.medium))
+                Spacer()
+                Text("剩余 \(remainingPercentText(for: item))")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.75)
+            }
+
+            ProgressView(value: remainingFraction(for: item))
+                .progressViewStyle(.linear)
+        }
+        .padding(14)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(.quaternary.opacity(0.5), in: RoundedRectangle(cornerRadius: 14))
+    }
+
+    private func remainingPercentText(for item: UsageProgress) -> String {
+        "\(Int((remainingFraction(for: item) * 100).rounded()))%"
+    }
+
+    private func remainingFraction(for item: UsageProgress) -> Double {
+        let usedFraction = max(0, min(1, item.fraction))
+        return 1 - usedFraction
     }
 
     private var metricsSection: some View {
