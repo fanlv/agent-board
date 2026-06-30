@@ -4,18 +4,11 @@ import SwiftUI
 @main
 struct AgentBoardApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
-    @Environment(\.openWindow) private var openWindow
     @StateObject private var refreshController = UsageRefreshController()
+    @State private var windowController: AgentBoardWindowController?
 
     var body: some Scene {
-        WindowGroup(id: "main") {
-            ContentView()
-                .environmentObject(refreshController)
-                .frame(minWidth: 520, minHeight: 420)
-        }
-        .windowResizability(.contentSize)
-
-        MenuBarExtra("Agent Board", systemImage: "sparkle") {
+        MenuBarExtra {
             Button("Open Agent Board") {
                 openMainWindow()
             }
@@ -51,6 +44,9 @@ struct AgentBoardApp: App {
             Button("Quit Agent Board") {
                 NSApp.terminate(nil)
             }
+        } label: {
+            Image(systemName: "chart.bar.fill")
+                .accessibilityLabel("Agent Board")
         }
         .menuBarExtraStyle(.menu)
         .commands {
@@ -67,12 +63,56 @@ struct AgentBoardApp: App {
     }
 
     private func openMainWindow() {
-        openWindow(id: "main")
+        if windowController == nil {
+            windowController = AgentBoardWindowController(refreshController: refreshController)
+        }
+
+        windowController?.show()
         NSApp.activate(ignoringOtherApps: true)
     }
 }
 
+@MainActor
+final class AgentBoardWindowController: NSObject, NSWindowDelegate {
+    private let refreshController: UsageRefreshController
+    private var window: NSWindow?
+
+    init(refreshController: UsageRefreshController) {
+        self.refreshController = refreshController
+    }
+
+    func show() {
+        let window = window ?? makeWindow()
+        self.window = window
+        window.makeKeyAndOrderFront(nil)
+    }
+
+    private func makeWindow() -> NSWindow {
+        let contentView = ContentView()
+            .environmentObject(refreshController)
+            .frame(minWidth: 520, minHeight: 420)
+
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 760, height: 560),
+            styleMask: [.titled, .closable, .miniaturizable, .resizable],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "Agent Board"
+        window.contentView = NSHostingView(rootView: contentView)
+        window.minSize = NSSize(width: 520, height: 420)
+        window.isReleasedWhenClosed = false
+        window.delegate = self
+        window.center()
+        return window
+    }
+}
+
 final class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        NSApp.setActivationPolicy(.accessory)
+    }
+
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         false
     }

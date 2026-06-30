@@ -246,6 +246,8 @@ struct ContentView: View {
 
         do {
             try AuthFileBookmarkStore.saveBookmark(for: selectedURL)
+            _ = try AuthTokenReader().accessToken()
+
             Task {
                 await refreshController.refreshUsage()
             }

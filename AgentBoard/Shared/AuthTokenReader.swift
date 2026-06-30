@@ -49,8 +49,15 @@ enum AuthFileBookmarkStore {
     }
 
     static func saveBookmark(for url: URL) throws {
+        let didStartSecurityScope = url.startAccessingSecurityScopedResource()
+        defer {
+            if didStartSecurityScope {
+                url.stopAccessingSecurityScopedResource()
+            }
+        }
+
         let data = try url.bookmarkData(
-            options: [.withSecurityScope],
+            options: [.withSecurityScope, .securityScopeAllowOnlyReadAccess],
             includingResourceValuesForKeys: nil,
             relativeTo: nil
         )
