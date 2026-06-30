@@ -132,13 +132,13 @@ struct AgentUsageWidgetView: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(title)
-                    .font(.system(size: 12, weight: .bold, design: .monospaced))
+                    .font(.system(size: 12, weight: .regular, design: .monospaced))
                     .foregroundStyle(QuotaPalette.cardMuted)
 
                 Spacer()
 
                 Text(progress.map(windowValue(for:)) ?? fallbackWindowValue)
-                    .font(.system(size: 12, weight: .heavy, design: .monospaced))
+                    .font(.system(size: 12, weight: .regular, design: .monospaced))
                     .foregroundStyle(.white)
                     .lineLimit(1)
                     .minimumScaleFactor(0.65)
@@ -161,11 +161,11 @@ struct AgentUsageWidgetView: View {
     private func compactStat(label: String, value: String) -> some View {
         VStack(alignment: .leading, spacing: 1) {
             Text(label)
-                .font(.system(size: 10, weight: .bold, design: .monospaced))
+                .font(.system(size: 10, weight: .regular, design: .monospaced))
                 .foregroundStyle(QuotaPalette.cardMuted)
 
             Text(value)
-                .font(.system(size: 12, weight: .heavy, design: .monospaced))
+                .font(.system(size: 12, weight: .regular, design: .monospaced))
                 .foregroundStyle(.white)
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
@@ -311,7 +311,13 @@ struct AgentUsageWidgetView: View {
     }
 
     private func windowValue(for progress: UsageProgress) -> String {
-        "剩余 \(remainingPercentText(for: progress))"
+        let remainingText = "剩余 \(remainingPercentText(for: progress))"
+
+        guard let resetTime = progress.resetTime, !resetTime.isEmpty else {
+            return remainingText
+        }
+
+        return "\(remainingText) · \(resetTime)"
     }
 
     private func remainingPercentText(for progress: UsageProgress) -> String {
@@ -534,11 +540,11 @@ private struct DecorativeTypeField: View {
     }
 
     private static let fragments = [
-        Fragment(text: "TOTAL", x: 0.14, y: 0.18, size: 20, opacity: 0.018, rotation: -2, weight: .heavy),
-        Fragment(text: "TOKENS", x: 0.82, y: 0.20, size: 18, opacity: 0.016, rotation: 5, weight: .bold),
-        Fragment(text: "LIMITS", x: 0.18, y: 0.56, size: 18, opacity: 0.014, rotation: 7, weight: .semibold),
-        Fragment(text: "RESET", x: 0.78, y: 0.66, size: 22, opacity: 0.016, rotation: -8, weight: .heavy),
-        Fragment(text: "Σ", x: 0.48, y: 0.28, size: 42, opacity: 0.012, rotation: -8, weight: .black)
+        Fragment(text: "TOTAL", x: 0.14, y: 0.18, size: 20, opacity: 0.018, rotation: -2, weight: .regular),
+        Fragment(text: "TOKENS", x: 0.82, y: 0.20, size: 18, opacity: 0.016, rotation: 5, weight: .regular),
+        Fragment(text: "LIMITS", x: 0.18, y: 0.56, size: 18, opacity: 0.014, rotation: 7, weight: .regular),
+        Fragment(text: "RESET", x: 0.78, y: 0.66, size: 22, opacity: 0.016, rotation: -8, weight: .regular),
+        Fragment(text: "Σ", x: 0.48, y: 0.28, size: 42, opacity: 0.012, rotation: -8, weight: .regular)
     ]
 }
 
@@ -593,12 +599,12 @@ private struct GlossyQuotaBlob: View {
             if showsText {
                 VStack(spacing: -2) {
                     Text("\(Int((remainingFraction * 100).rounded()))%")
-                        .font(.system(size: 34, weight: .heavy, design: .rounded))
+                        .font(.system(size: 34, weight: .regular, design: .rounded))
                         .foregroundStyle(.white)
                         .shadow(color: .black.opacity(0.2), radius: 3, x: 0, y: 1)
 
                     Text("剩余")
-                        .font(.caption.weight(.bold))
+                        .font(.caption.weight(.regular))
                         .foregroundStyle(.white.opacity(0.72))
                 }
             }
@@ -650,12 +656,12 @@ private struct MiniMetricChip: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             Text(metric.label)
-                .font(.caption2.weight(.bold))
+                .font(.caption2.weight(.regular))
                 .foregroundStyle(QuotaPalette.secondaryInk)
                 .lineLimit(1)
 
             Text(metric.value)
-                .font(.caption.weight(.heavy))
+                .font(.caption.weight(.regular))
                 .foregroundStyle(QuotaPalette.ink)
                 .lineLimit(1)
                 .minimumScaleFactor(0.75)
