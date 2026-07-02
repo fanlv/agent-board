@@ -417,7 +417,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+                                CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9BQ563P4RA;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -441,7 +441,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+                                CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9BQ563P4RA;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -463,7 +463,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = AgentBoardWidget/AgentBoardWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+                                CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9BQ563P4RA;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = AgentBoardWidget/Info.plist;
@@ -488,7 +488,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_ENTITLEMENTS = AgentBoardWidget/AgentBoardWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+                                CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 9BQ563P4RA;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = AgentBoardWidget/Info.plist;

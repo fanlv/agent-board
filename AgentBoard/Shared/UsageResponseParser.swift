@@ -86,7 +86,9 @@ enum UsageResponseParser {
         }
 
         let usedText = "\(JSONValue.number(usedPercent).displayValue)%"
-        let resetTime = object["reset_at"].flatMap(parseDate(from:)).map(resetTimeDescription(for:))
+        let resetTime = object["reset_at"].flatMap(parseDate(from:)).map {
+            resetTimeDescription(for: $0, label: label)
+        }
 
         return UsageProgress(
             label: label,
@@ -552,10 +554,17 @@ enum UsageResponseParser {
         return formatter.string(from: date)
     }
 
-    private static func resetTimeDescription(for date: Date) -> String {
+    private static func resetTimeDescription(for date: Date, label: String) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
+        formatter.dateFormat = isSevenDayWindow(label: label) ? "MM-dd HH:mm" : "HH:mm"
         return formatter.string(from: date)
+    }
+
+    private static func isSevenDayWindow(label: String) -> Bool {
+        let normalizedLabel = label.lowercased()
+        return normalizedLabel.contains("7")
+            || normalizedLabel.contains("week")
+            || normalizedLabel.contains("day")
     }
 
     private static let priorityKeywords = [

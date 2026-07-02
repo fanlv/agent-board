@@ -115,13 +115,14 @@ struct AgentUsageWidgetView: View {
                 quotaBar(title: "7天窗口", progress: secondaryProgress, tint: QuotaPalette.cardBlue)
             }
 
-            HStack(spacing: 10) {
+            HStack(alignment: .top, spacing: 12) {
                 compactStat(label: "Reset", value: resetCreditValue)
-                compactStat(label: "Expires", value: resetExpiryText(compact: compact))
+                resetExpiryStat(compact: compact)
 
                 Spacer(minLength: 0)
 
                 timestamp
+                    .padding(.top, 1)
             }
         }
         .padding(compact ? 16 : 22)
@@ -170,6 +171,33 @@ struct AgentUsageWidgetView: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
         }
+    }
+
+    private func resetExpiryStat(compact: Bool) -> some View {
+        let values = resetExpiryValues(compact: compact)
+
+        return VStack(alignment: .leading, spacing: 3) {
+            Text("Expires")
+                .font(.system(size: 10, weight: .regular, design: .monospaced))
+                .foregroundStyle(QuotaPalette.cardMuted)
+
+            VStack(alignment: .leading, spacing: 2) {
+                ForEach(Array(values.enumerated()), id: \.offset) { _, value in
+                    HStack(alignment: .firstTextBaseline, spacing: 5) {
+                        Circle()
+                            .fill(QuotaPalette.cardPrimary.opacity(0.82))
+                            .frame(width: 3.5, height: 3.5)
+
+                        Text(value)
+                            .font(.system(size: compact ? 10.5 : 12, weight: .regular, design: .monospaced))
+                            .foregroundStyle(.white)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.72)
+                    }
+                }
+            }
+        }
+        .frame(maxWidth: compact ? 72 : 150, alignment: .leading)
     }
 
     private var timestamp: some View {
@@ -283,17 +311,17 @@ struct AgentUsageWidgetView: View {
         }
     }
 
-    private func resetExpiryText(compact: Bool) -> String {
+    private func resetExpiryValues(compact: Bool) -> [String] {
         let values = resetExpiryMetrics.map(\.value)
         guard !values.isEmpty else {
-            return statusText
+            return [statusText]
         }
 
         if compact {
-            return values[0]
+            return Array(values.prefix(2))
         }
 
-        return values.prefix(2).joined(separator: " / ")
+        return values
     }
 
     private func windowTitle(for progress: UsageProgress) -> String {

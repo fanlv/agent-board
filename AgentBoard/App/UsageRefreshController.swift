@@ -48,20 +48,34 @@ final class UsageRefreshController: ObservableObject {
         isRefreshing = true
         let nextSnapshot = await UsageService().fetchUsage()
         snapshot = nextSnapshot
-
-        if nextSnapshot.isReady {
-            WidgetCenter.shared.reloadTimelines(ofKind: AppConfiguration.widgetKind)
-        }
+        UsageSnapshotStore.save(nextSnapshot)
+        forceReloadWidgetTimelines()
 
         isRefreshing = false
     }
 
     func replaceSnapshot(_ nextSnapshot: UsageSnapshot) {
         snapshot = nextSnapshot
+        UsageSnapshotStore.save(nextSnapshot)
+        forceReloadWidgetTimelines()
     }
 
     func reloadWidget() {
+        forceReloadWidgetTimelines()
+    }
+
+    private func forceReloadWidgetTimelines() {
+        reloadWidgetTimelines()
+
+        Task { @MainActor in
+            try? await Task.sleep(nanoseconds: 750_000_000)
+            reloadWidgetTimelines()
+        }
+    }
+
+    private func reloadWidgetTimelines() {
         WidgetCenter.shared.reloadTimelines(ofKind: AppConfiguration.widgetKind)
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func refreshLaunchAtLoginStatus() {
